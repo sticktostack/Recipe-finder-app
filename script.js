@@ -2,7 +2,15 @@ let searchBox = document.getElementById("searchbox");
 let searchForm = document.getElementById("searchform");
 let searchBtn = document.getElementById("searchbtn");
 let resultArea = document.getElementById("resultarea");
+let recipeDetails =  document.getElementById('recipedetails')
+let closeBtn = document.getElementById('closeBtn')
 // let url = `www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata`
+
+// showing recipe after clicking on get recipe button 
+function getRecipe(){
+  recipeDetails.style.display = "block"
+}
+
 
 let keyword = ""; //searching value
 function searchRecipe() {
@@ -22,13 +30,24 @@ function searchRecipe() {
           <img src = ${meal.strMealThumb}>
           <h3>Name : ${meal.strMeal}</h3>
           <h4>Category : ${meal.strCategory}</h4>
-          <h4>${meal.strArea} food</h4>
-          <button id="recipebtn">Get Recipe</button>
-          `;
+          <h4>${meal.strArea} food</h4>`;
+          let button = document.createElement('button')
+          button.id = 'recipebtn'
+          button.innerHTML = 'Get Recipe'
+          mealBox.appendChild(button)
+
+          button.addEventListener('click',()=>{
+            getRecipe()
+          })
+          closeBtn.addEventListener('click',()=>{
+            recipeDetails.style.display = 'none'
+          })
+
         resultArea.appendChild(mealBox);
         console.log(meal);
       });
     })
+    
     .catch((error) => {
         let errorMsg = document.createElement('div')
         errorMsg.id='error'

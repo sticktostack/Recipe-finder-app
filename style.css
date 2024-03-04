@@ -22,10 +22,14 @@ html,body{
     background-color: rgb(171, 143, 4);
 }
 .tittle{
+    transition: all 0.2s;
     font-weight: 700;
     color: #131A1B;
     font-family: gotham;
     text-decoration: underline;
+}
+.tittle:hover{
+    color: #fff;
 }
 #searchbox::selection{
     background-color: rgb(255, 58, 23);
@@ -90,6 +94,10 @@ span{
     background-color: #AB8F04;
     gap: 5px;
     padding-bottom: 10px;
+    transition: all 0.3s;
+}
+#meal-box:hover{
+    scale: 1.01;
 }
 #meal-box>h3{
     font-size: 20px;
@@ -108,15 +116,22 @@ span{
     object-fit: cover;
 }
 #recipebtn{
+    cursor: pointer;
     border-radius: 5px;
     padding: 5px 10px;
-    background-color: crimson;
+    background-color: seagreen;
     color: #fff;
     border: none;
     margin-top: 10px;
     outline: none;
     width: 50%;
-
+    font-weight: 600;
+    transition: all 0.3s;
+}
+#recipebtn:hover{
+    background-color: crimson;
+    color: #fff;
+    scale: 0.95;
 }
 #fetching{
     z-index: 99;
@@ -140,4 +155,40 @@ span{
     color: salmon;
     font-size: 50px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#recipedetails{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    padding: 10px 12px;
+    transition: all 0.3s;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    position: fixed;
+    height: 300px;
+    width: 350px;
+    color: #00ff59;
+    background-color:#131A1B;
+    border-radius:15px;
+}
+#recipedetails::-webkit-scrollbar{
+    background-color: transparent;
+    width: 10px;
+    scroll-behavior: smooth;
+}
+#recipedetails::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgb(177, 177, 177);
+}
+#closeBtn{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    background-color: transparent;
+    border: none;
+    color: crimson;
 }
