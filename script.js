@@ -7,10 +7,12 @@ let closeBtn = document.getElementById('closeBtn')
 // let url = `www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata`
 
 // showing recipe after clicking on get recipe button 
-function getRecipe(){
+function getRecipe(meal){
+  console.log(meal.strIngredient1)
   recipeDetails.style.display = "block"
+  closeBtn.style.display = "block"
+  recipeDetails.innerHTML = `<h2>${meal.strMeal}</h2>`
 }
-
 
 let keyword = ""; //searching value
 function searchRecipe() {
@@ -37,7 +39,7 @@ function searchRecipe() {
           mealBox.appendChild(button)
 
           button.addEventListener('click',()=>{
-            getRecipe()
+            getRecipe(meal)
           })
           closeBtn.addEventListener('click',()=>{
             recipeDetails.style.display = 'none'
@@ -47,7 +49,7 @@ function searchRecipe() {
         console.log(meal);
       });
     })
-    
+    // handling error 
     .catch((error) => {
         let errorMsg = document.createElement('div')
         errorMsg.id='error'
